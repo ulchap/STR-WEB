@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Редактирование клиента</title>
+</head>
+<body>
+    <li><a href="/">На главную</a></li>
+    <h1>Редактирование клиента</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Имя:</td>
+                <td><input type="text" name="name" required> {{client.name}}</td>
+            </tr>
+            <tr>
+                <td>Возраст:</td>
+                <td><input type="date"name="age" min="18" required> {{client.age}}</td>
+            </tr>
+            <tr>
+                <td>Номер телефона:</td>
+                    <td>
+                        <select name="phone_code" required>
+                            <option value="">Выберите код оператора</option>
+                            <option value="44">+375 (44)</option>
+                            <option value="25">+375 (25)</option>
+                            <option value="29">+375 (29)</option>
+                        </select>
+                        <input type="tel" name="phone_number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}" required>
+                    </td>
+            </tr>
+            <tr>
+                <td>Марка машины:</td>
+                <td>
+                    <select name="model_car" required>
+                        {% for model in car_models %}
+                            <option value="{{ model.id }}" {% if client.car_model == model %}selected{% endif %}>{{ model.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Тип машины:</td>
+                <td>
+                    <select name="type_car" required>
+                        {% for type in car_types %}
+                            <option value="{{ type.id }}" {% if client.car_typel == type %}selected{% endif %}>{{ type.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+        </table>   
+        <input href="client" type="submit" value="Сохранить"> 
+    </form>
+</body>
+</html>

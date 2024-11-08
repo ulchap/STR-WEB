@@ -1,0 +1,102 @@
+{% extends "menu.html" %}
+{% block title %}Добро пожаловать{% endblock title %}
+
+{% block content %}
+{% load static %}
+
+<!-- <h2 class="services-header">Наши услуги</h2>
+<form method="POST" class="filter-form">
+    {% csrf_token %}
+    <label for="price_from">Цена от:</label>
+    <input type="number" id="price_from" name="price_from" required>
+    <label for="price_to"> до:</label>
+    <input type="number" id="price_to" name="price_to" required>
+    <button type="submit" class="btn btn-filter">Применить фильтр</button>
+</form><br> -->
+<section class="services">
+    <div class="container">
+        <h2>Наши услуги</h2>
+        {% if services %}
+        <div class="container card-container">
+            {% for service in services %}
+            <div class="card">
+                <a href="{% url 'service_detail' service.id %}">
+                    <h5>{{service.name}}</h4>
+                    <img src="{{ MEDIA_URL }}{{ service.img }}" alt="Услуга" width="150" height="100">
+                    <p class='card-category'>Категория: {{service.category}}</p>
+                    <p class="card-price">Цена: {{service.price}}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="no-services">Услуг пока нет.</p>
+        {% endif %}
+    </div>
+</section>
+
+<section class="ad">
+    <div class="container container-ad">
+        <div class="ad1">
+            <img src="{% static 'images/ad_banner.jpg' %}" width="404" height="609" alt="Реклама 1" class="ad-banner">
+            <p>Доверьте свою машину<br>профессионалам</p>
+        </div>
+        <div class="ad2">
+            <p>Ремонт с использованием<br>новейших технологий</p>
+            <img src="{% static 'images/ad_banner2.jpg' %}" width="439" height="609" alt="Реклама 2" class="ad-banner">
+        </div>
+    </div>
+</section>
+
+{% if article %} 
+<article class="article" style="overflow: hidden;">
+    <div class="container">
+        <h3>Последняя статья</h3>
+        <div class="article-item">
+            <h5>{{ article.title }}</h5>      
+            <img src="{{ MEDIA_URL }}{{ article.img_url }}">
+            <p>{{ article.text}}</p> 
+            <a class="button-reg" href="{% url 'article' article.id %}">Читать далее</a>
+        </div>
+        <div class="animation-container">
+            <div class="car-body">
+                <img src="{% static 'images/car.png' %}">
+                <img class="headlight left" src="{% static 'images/headlight.png' %}">             
+                <img class="headlight right" src="{% static 'images/headlight.png' %}">
+            </div>
+            <div class="wheel left"></div>
+            <div class="wheel right"></div>
+            <h2 class="company-name">AutoCare</h2>
+        </div>
+    </div>
+</article>
+{% else %} 
+<p class="no-article">Статей пока нет.</p> 
+{% endif %}
+
+<div class="partners">
+    <div class="container">
+        <h3 class="partners-header">Наши партнёры</h3>
+        {% if partners %}
+            {% for partner in partners %}
+            <div class="partner">
+                <img src="{{ MEDIA_URL }}{{ partner.logo_url }}" width="50" height="50" alt="Логотип {{ partner.name }}">
+                <a href="{{ partner.site_url }}" target="_blank">{{ partner.name }}</a>
+            </div>
+            {% endfor %}
+        {% else %}
+        <p class="no-partners">Партнёров пока нет.</p>
+        {% endif %}
+    </div>
+    <div class="preloader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+</div>
+
+{% include "footer.html" %}
+{% endblock content %}
+

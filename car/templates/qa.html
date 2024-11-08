@@ -1,0 +1,17 @@
+{% extends "menu_template.html" %}
+{% block title %}Вопрос-ответ{% endblock title %}
+{% block header %}Вопросы-ответы{% endblock header %}
+
+{% block content %}
+<div class="container" style="margin-top: 160px; margin-bottom: 100px;">
+    {% for qa in qas %}
+    <details class="question">
+        <summary>{{ qa.question }}</summary>
+            <p>{{ qa.answer }}</p>
+            <p>Дата: {{ qa.date }}</p>
+        <hr>
+    </details>
+    {% endfor %}
+</div>
+{% include "footer.html" %}
+{% endblock content %}

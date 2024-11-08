@@ -1,0 +1,15 @@
+{% extends "menu_template.html" %}
+{% block title %}{{ article.title }}{% endblock title %}
+{% block header %}{{ article.title }}{% endblock header %}
+
+{% block content %}
+<article class="container">
+    <div class="article-item">
+        <h5>{{ article.title }}</h5>      
+        <img src="{{ MEDIA_URL }}{{ article.img_url }}">
+        <p>{{ article.text}}</p> 
+    </div>
+    <a class="button back" href="{% url 'news' %}">Назад к списку статей</a>
+</article>
+{% include "footer.html" %}
+{% endblock content %}

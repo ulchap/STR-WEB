@@ -1,0 +1,25 @@
+{% extends "menu_template.html" %}
+{% block title %}Оплата{% endblock title %}
+{% block header %}Оплата{% endblock header %}
+
+{% block content %}
+<h2>Оплата</h2>
+
+
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="card_number">Номер карты:</label>
+        <input type="text" id="card_number" name="card_number" required>
+    </div>
+    <div class="form-group">
+        <label for="expiry_date">Срок действия:</label>
+        <input type="text" id="expiry_date" name="expiry_date" required>
+    </div>
+    <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" required>
+    </div>
+    <a href="/">Оплатить</a>
+
+{% include "footer.html" %}
+{% endblock content %}

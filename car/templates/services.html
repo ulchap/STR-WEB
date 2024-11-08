@@ -1,0 +1,38 @@
+{% extends "menu_template.html" %}
+{% block title %}Наши услуги{% endblock title %}
+{% block header %}Услуги{% endblock header %}
+
+{% block content %}
+<li><a href="/">На главную</a></li>
+<h2 class="services-header">Наши услуги</h2>
+<form method="POST" class="filter-form">
+    {% csrf_token %}
+    <label for="price_from">Цена от:</label>
+    <input type="number" id="price_from" name="price_from" required>
+    <label for="price_to"> до:</label>
+    <input type="number" id="price_to" name="price_to" required>
+    <button type="submit" class="btn btn-filter">Применить фильтр</button>
+</form><br>
+{% if services %}
+<table class="services-table">
+    <thead>
+        <tr>
+            <th>Услуга</th>
+            <th>Цена</th>
+            <th>Категория</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for service in services %}
+        <tr>
+            <td>{{ service.name }}</td>
+            <td>{{ service.price }}</td>
+            <td>{{ service.category }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="no-services">Услуг пока нет.</p>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Регистрация</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/main_template.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container register">
+        <h2>Регистрация</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="login">Логин:</label>
+                {{ form.login }}
+            </div>
+            <div class="form-group">
+                <label  for="password">Пароль:</label>
+                {{ form.password }}
+            </div>
+            <div class="form-group">
+                <label>Тип пользователя:</label>
+                <label><input type="radio" name="user_type" value="master"> Мастер</label>
+                <label><input type="radio" name="user_type" value="client"> Клиент</label>
+            </div>
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="date_of_birth">Дата рождения:</label>
+                <input type="date" name="date_of_birth" required>
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Номер телефона:</label>
+                <select name="phone_code" required>
+                    <option value="">Выберите код оператора</option>
+                    <option value="44">+375 (44)</option>
+                    <option value="25">+375 (25)</option>
+                    <option value="29">+375 (29)</option>
+                </select>
+                <input type="tel" name="phone_number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}" required>
+            </div>
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+        <div class="buttons">
+            <a class="button btn-review" href="/">На главную</a>
+            <a class="button btn-review" href="/login">Уже есть аккаунт</a>
+        </div>
+    </div>
+</body>
+</html>

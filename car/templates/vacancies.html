@@ -1,0 +1,21 @@
+{% extends "menu_template.html" %}
+{% block title %}Вакансии{% endblock title %}
+{% block header %}Вакансии{% endblock header %}
+
+{% block content %}
+<div class="container" >
+    <h2 style="margin-left: 35%; margin-bottom: 50px;">вакансии</h2>
+    {% for job in jobs %}
+    <div class="job-post">
+        <h3>{{ job.title }}</h3>
+        <p>Зарплата: {{ job.salary }} руб.</p>
+        <p>{{ job.description }}</p>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    {% endfor %}
+
+    <p>Для получения дополнительной информации и подачи заявки свяжитесь с нами.</p>
+</div>
+{% include "footer.html" %}
+{% endblock content %}

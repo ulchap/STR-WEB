@@ -1,0 +1,93 @@
+{% extends "menu_template.html" %}
+{% block body_class %}about-company{% endblock %}
+{% block title %}О компании{% endblock title %}
+{% block header %}О компании{% endblock header %}
+
+{% load static %}
+
+{% block content %}
+<div class="container about">
+    <h2>о нашей компании</h2>
+    <p class="description"><strong style="font-weight: 800; color: #083C65; font-size: 30px;">Автосервис AutoCare</strong> — стремительно развивающаяся компания, 
+    оказывающая профессиональные услуги технического обслуживания, слесарного и кузовного ремонта автомобилей, 
+    покраски и тюнинга авто в Минске. Наш автосервис оснащен новым современным оборудованием и инструментом, 
+    а также имеет в штате квалифицированных специалистов с большим опытом практической работы. Доверив свой автомобиль 
+    нашим мастерам, вы можете быть уверены в оперативном выполнении заказа и высоком качестве ремонтных работ.
+    Обращаясь в компанию AutoCare, вы доверяете ремонт и тюнинг вашего автомобиля специалистам, которые знают и любят свою работу. 
+    Квалификация наших механиков позволяет выполнять ремонтные работы любой сложности. 
+    При этом у нас очень демократичные расценки на все услуги, а качество обязательно подтверждается гарантией.
+    Мы ценим своих клиентов, и всегда стараемся работать так, чтобы они могли рекомендовать нас своим 
+    друзьям и знакомым. Поэтому мы предлагаем ряд весомых преимуществ:
+    </p>
+    <ul class="about-list">
+        <li>Широкий спектр услуг по техническому обслуживанию, слесарному и кузовному ремонту, тюнингу, покраске легковых автомобилей и микроавтобусов всех марок.</li>
+        <li>Доступные цены, которые не изменяются в процессе выполнения работ.</li>
+        <li>Четкое соблюдение заранее оговоренных с клиентом сроков выполнения работ.</li>
+        <li>Индивидуальный подход и вежливое отношение к каждому клиенту.</li>
+    </ul>
+    <h3>Видео о компании</h3>
+    <video width="560" height="315" controls>
+        <source src="{% static 'videos/about_company.mp4' %}" type="video/mp4">
+        Ваш браузер не поддерживает встроенные видео.
+    </video>
+    <h3 style="text-align: center;">Сертификат</h3>
+    <!-- <img style="margin-bottom: 100px;" src="{% static 'images/certificate.png' %}"> -->
+    <div class="certificate">
+        <h3>ЕДИНЫЙ РЕЕСТР АВТОСЕРВИСОВ</h3>
+        <h1>СЕРТИФИКАТ КАЧЕСТВА</h1>
+        <div class="date">
+            <p>Дата выдачи:</p><p>12 Октября 2024 г.</p>
+        </div>
+        <h2>ООО "AutoCare"</h2>
+        <p class="certificate-text">
+            Сертификат подтверждает, что компания ООО "AutoCare" предоставляет услуги высшего качества по ремонту и обслуживанию автомобилей.
+        </p>
+        <div >
+            <img width="100px" src="{% static 'images/pechat.png' %}" alt="Pechat" class="pechat">
+            <img width="100px" src="{% static 'images/sign.png' %}" alt="Sign" class="sign">
+            <p class="signature">_______________________</p>
+            <p class="signature" style="margin-bottom: 70px;">Директор: Поборцева У.С.</p>
+        </div>
+        <hr>
+        <div class="footer">
+            <img src="{% static 'images/logo_c.png' %}" alt="Logo" class="logo_c">
+            <p>Орган по сертификации ООО "Гостест", аттестат аккредитации №БЕЛBY.31612.04ПШН0.ОС.12.10.2024.
+                Адрес: РБ 123456, г.Минск, пр-т Пушкина, д.1, офис 202-4. Телефон: +375 (29) 123-45-67.
+                E-mail: info@gostest.by
+            </p>
+        </div>
+    </div>
+
+    <h3>Реквизиты для связи</h3>
+    <div itemscope itemtype="http://schema.org/AutoRepair">
+        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <p>
+                Адрес: <span itemprop="streetAddress">ул. Пушкина, 10</span>,
+                <span itemprop="addressLocality">Минск</span>,
+                <span itemprop="addressRegion">Минск</span>,
+                <span itemprop="postalCode">123456</span>
+            </p>
+        </div>
+        <p>Телефон: <span itemprop="telephone">+375 (25) 123-45-67</span></p>  
+        <div itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification">
+            <p itemprop="dayOfWeek">Пн, Вт, Ср, Чт, Пт</p>
+            <p>Часы работы: <time itemprop="opens" datetime="08:00">08:00</time> - <time itemprop="closes" datetime="18:00">18:00</time></p>
+        </div>   
+    </div>
+
+    <blockquote lang="en"><p>"This is an English quote."</p></blockquote>
+    <blockquote lang="ru"><p>"Это русская цитата."</p></blockquote>
+    <ul class="unicode-list">
+        <li>Широкий спектр услуг по техническому обслуживанию, слесарному и кузовному ремонту, тюнингу, покраске легковых автомобилей и микроавтобусов всех марок.</li>
+        <li>Доступные цены, которые не изменяются в процессе выполнения работ.</li>
+        <li>Четкое соблюдение заранее оговоренных с клиентом сроков выполнения работ.</li>
+        <li>Индивидуальный подход и вежливое отношение к каждому клиенту.</li>
+    </ul>
+
+    <div class="navigation">
+        <a class="button btn-review" href="/reviews">Отзывы клиентов</a>
+        <a class="button btn-qa" href="/qa">Частые вопросы</a>
+    </div>
+</div>
+{% include "footer.html" %}
+{% endblock content %}

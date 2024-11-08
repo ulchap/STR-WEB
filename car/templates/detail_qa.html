@@ -1,0 +1,10 @@
+{% extends "menu_template.html" %}
+{% block title %}{{ qa.question }}{% endblock title %}
+{% block header %}{{ qa.question }}{% endblock header %}
+     
+{% block content %}
+<h3>{{ qa.question }}</h3>
+<p>{{ qa.answer }}</p>
+<p>Дата: {{ qa.date }}</p>
+<a href="{% url 'qa' %}">Назад к списку вопросов</a>
+{% endblock content %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Система управления автосервисом">
+    <meta name="keywords" content="ремонт машин, автосервис">
+    <title>{% block title %}Default title{% endblock title %}</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/main_template.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    <header class="header">
+        <div class="container menu">
+            <a class="logo" href="/"><img src="{% static 'images/logo.svg' %}" alt="Logo"></a>
+            <nav>
+                <ul>
+                    <li><a title="Узнать о нашей компании" href="/about_company">О нас</a></li>
+                    <li><a title="Опубликованные статьи" href="/news">Новости</a></li>
+                    <li><a title="Вопрос-ответ" href="/qa">FAQ</a></li>
+                    <li><a title="Информация о наших работниках" href="/contacts">Сотрудники</a></li>
+                    <li><a title="Актуальные предложения" href="/vacancies">Вакансии</a></li>
+                    <li><a href="/reviews">Отзывы</a></li>
+                    <li><a href="/promocodes">Промокоды</a></li>
+                    <li><a href="/cart">Корзина</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div>{% block content%}{% endblock content %}</div>
+    </main>
+</body>
+</html>

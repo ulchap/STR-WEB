@@ -1,0 +1,33 @@
+{% extends "menu_template.html" %}
+{% block title %}Новости{% endblock title %}
+{% block header %}Новости{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <h2 class="news">новости компании</h2>
+    <!-- <form method="POST">
+        {% csrf_token %}
+        <label>Сортировка:</label>
+        <select name="sort">
+            <option value="date_new">Дата (от новых к старым)</option>
+            <option value="date_old">Дата (от старых к новым)</option>
+        </select>
+        <button type="submit">Применить</button>
+    </form> -->
+    {% if articles %}
+        <article>
+            {% for article in articles %}
+            <div class="article">
+                <h5>{{ article.title }}</h5>      
+                <img src="{{ MEDIA_URL }}{{ article.img_url }}">
+                <p>{{ article.text}}</p> 
+                <a class="button" href="{% url 'article' article.id %}">Читать далее</a>
+            </div>
+            {% endfor %}
+        </article>
+    {% else %}
+        <p>Нет доступных новостей.</p>
+    {% endif %}
+</div>
+{% include "footer.html" %}
+{% endblock content %}

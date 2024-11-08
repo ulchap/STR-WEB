@@ -1,0 +1,29 @@
+{% extends "menu_template.html" %}
+{% block title %}Корзина{% endblock title %}
+{% block header %}Корзина{% endblock header %}
+
+{% block content %}
+{% load static %}
+<h1>Корзина</h1>
+{% if cart_items %}
+    <ul>
+        {% for item in cart_items %}
+            <li>
+                {{ item.service.name }} - {{ item.quantity }} x {{ item.service.price }}
+                <form method="post" action="{% url 'update_cart_item' item.id item.service.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <button type="submit" name="action" value="increase">+</button>
+                    <button type="submit" name="action" value="decrease">-</button>
+                    <button type="submit" name="action" value="remove">Удалить</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Итого: {{ total_price }}</h2>
+    <a href="/checkout">Оплатить</a>
+{% else %}
+<p>Ваша корзина пуста</p>
+{% endif %}
+{% include "footer.html" %}
+{% endblock content %}
